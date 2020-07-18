@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Издатели</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <ul class="list-group">
+    {% for publisher in publishers %}
+        <li class="list-group-item">📚 <b>{{ publisher.title }} (книг: {{ publisher.book_publisher.all|length }})</b>
+        <ul class="list-group">
+            {% for book in publisher.book_publisher.all %}
+            <li class="list-group-item">📖 {{ book.title }} - {{ book.year_release }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
